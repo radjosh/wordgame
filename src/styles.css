@@ -112,13 +112,27 @@ h1 {
   border: none;
   border-radius: 5px;
   font-size: 1rem;
+  align-items: center;
 }
 
-.keyboardCell.blank {
+.keyboardCell.unused{
   background: lightgray;
   color: black; 
-  display: flex;
-  align-items: center;
+}
+
+.keyboardCell.correct{
+  background: var(--color-success);
+  color: white; 
+}
+
+.keyboardCell.misplaced {
+  background: var(--color-warning);
+  color: white; 
+}
+
+.keyboardCell.incorrect{
+  background: var(--color-gray-100);
+  color: white; 
 }
 
 .cell {
