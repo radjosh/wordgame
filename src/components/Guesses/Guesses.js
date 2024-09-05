@@ -8,7 +8,7 @@ function Guesses({guesses, checks}) {
   const num_blanks = NUM_OF_GUESSES_ALLOWED - guesses.length;
   return (
   <div>
-    {guesses.map((guess, index) => <Guess key={crypto.randomUUID()} guess={guess} checks={checks} index={index}/>)}
+    {guesses.map((guess, index) => <Guess key={crypto.randomUUID()} guess={guess} checks={checks} guessNumber={index}/>)}
     {range(num_blanks).map(i => <Guess key={crypto.randomUUID()} />)}
   </div>
   )
