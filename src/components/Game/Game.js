@@ -7,11 +7,6 @@ import Guesses from "../Guesses";
 import Keyboard from "../Keyboard";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
-
 function Game() {
   const [guesses, setGuesses] = React.useState([]);
   const [checks, setChecks] = React.useState([]);
@@ -20,6 +15,26 @@ function Game() {
   const [keyboardState, setKeyboardState] = React.useState(
     _initializeKeyboardState
   );
+  const [answer, setAnswer] = React.useState(sample(WORDS));
+  // Pick a random word on every pageload.
+  // const answer = sample(WORDS);
+  // To make debugging easier, we'll log the solution in the console.
+  console.info({ answer });
+
+  function resetAll() {
+    const newGuesses = [];
+    setGuesses(newGuesses);
+    const newChecks = [];
+    setChecks(newChecks);
+    const newIsWin = false;
+    setIsWin(newIsWin);
+    const newIsLose = false;
+    setIsLose(newIsLose);
+    const newKeyboardState = _initializeKeyboardState();
+    setKeyboardState(newKeyboardState);
+    const newAnswer = sample(WORDS);
+    setAnswer(newAnswer);
+  }
 
   function _initializeKeyboardState() {
     const alphabet = "QWERTYUIOPASDFGHJKLZXCVBNM";
@@ -118,6 +133,7 @@ function Game() {
         isLose={isLose}
         num_guesses={guesses.length}
         answer={answer}
+        resetAll={resetAll}
       />
       <Keyboard keyboardState={keyboardState} />
     </>
