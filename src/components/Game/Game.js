@@ -4,6 +4,7 @@ import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import Input from '../Input'
 import Guesses from '../Guesses'
+import Keyboard from '../Keyboard';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 
 // Pick a random word on every pageload.
@@ -16,6 +17,7 @@ function Game() {
   const [checks, setChecks] = React.useState([]);
   const [isWin, setIsWin] = React.useState(false);
   const [isLose, setIsLose] = React.useState(false);
+  const [keyboardState, setKeyboardState] = React.useState({Q: 'unused', W: 'unused'});
 
 
   function handleGuess(guess) {
@@ -78,6 +80,7 @@ function Game() {
       num_guesses={guesses.length}
       answer={answer}
     />
+    <Keyboard />
   </>
   )
 }
